@@ -65,11 +65,6 @@ data.forEach(function(d){
 })
 
 var facts = crossfilter(data);
-var typeDimension = facts.dimension(function(d){ return d.type; });
-var typeGroup = typeDimension.group().reduceSum(function(d){ return d.total; });
-
-var totalDimension = facts.dimension(function(d){ return d.total; });
-var totalGroup = totalDimension.group(function(d){ return Math.floor(d/100)*100; });
 
 var dateDimension = facts.dimension(function(d){ return d.date; });
 var dateGroup = dateDimension.group().reduceSum(function(d){ return d.total; });
@@ -84,11 +79,11 @@ var lineChart = dc.lineChart("#chart")
     .margins({top:10,bottom:30,right:10,left:70})
     .dimension(dateDimension)
     .group(dateGroup,"total spend")
-    .stack(dateGroupTip,"tip")
+    .stack(dateGroupTip,"tip text for legend") // <----- stack goes here
     .yAxisLabel("Transaction spend")
     .renderHorizontalGridLines(true)
     .renderArea(true)
-    .legend(dc.legend().x(1200).y(5).itemHeight(12).gap(5))
+    .legend(dc.legend().x(100).y(5).itemHeight(12).gap(5)) // DC legend configuration
     .x(d3.time.scale().domain([minDate,maxDate]));
     // .centerBar(true)
     //.xUnits(dc.units.fp.precision(100));
