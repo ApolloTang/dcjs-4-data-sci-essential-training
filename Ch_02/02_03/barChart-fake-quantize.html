@@ -50,8 +50,6 @@
 ];
 
 var facts = crossfilter(data);
-var typeDimension = facts.dimension(function(d){ return d.type; });
-var typeGroup = typeDimension.group().reduceSum(function(d){ return d.total; });
 
 var totalDimension = facts.dimension(function(d){ return d.total; });
 var totalGroup = totalDimension.group(function(d){ return Math.floor(d/100)*100; });
