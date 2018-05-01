@@ -66,7 +66,8 @@ var barChart = dc.barChart("#chart")
     // .barPadding(0.2)
     // .outerPadding(0)
     barChart.yAxis().ticks(5);
-    barChart.xAxis().ticks(4);
+
+    barChart.xAxis().ticks(4); // must declair separately (not chaining)
 
 
 dc.renderAll();
