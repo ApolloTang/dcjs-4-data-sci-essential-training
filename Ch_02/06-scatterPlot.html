@@ -88,13 +88,15 @@ var scatter = dc.scatterPlot("#chart")
     .xAxisLabel("Total")
     .renderHorizontalGridLines(true)
     .renderVerticalGridLines(true)
-    .symbolSize(10)
+    .symbolSize(15)
     .clipPadding(20)
-    .symbol('cross')
+    .symbol('square') // .symbol('cross') // more share here https://github.com/d3/d3-shape#symbols
+    // title does not work, it is broken
+    .title(function(d){ return 'x: '+d.key[0]+', y: '+d.key[1]+', val: '+d.value; })
     .colorAccessor(function(d){ return d.value; })
     .colors(d3.scale.category20b())
     .x(d3.scale.linear().domain([0,600]))
-    .y(d3.scale.pow().domain([0,300])) //optional
+    .y(d3.scale.pow().domain([0,300])) //optional line or bar chart
 
 
     scatter.yAxis().ticks(5);
