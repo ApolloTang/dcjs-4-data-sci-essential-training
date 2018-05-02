@@ -90,9 +90,13 @@ var scatter = dc.scatterPlot("#chart")
     .renderVerticalGridLines(true)
     .symbolSize(15)
     .clipPadding(20)
-    .symbol('square') // .symbol('cross') // more share here https://github.com/d3/d3-shape#symbols
-    // title does not work, it is broken
+    .symbol('square')
+      // .symbol('cross')
+        //*  more share here:
+        //*  https://github.com/d3/d3-shape#symbols
+        //*  https://github.com/d3/d3-3.x-api-reference/blob/master/SVG-Shapes.md#symbol
     .title(function(d){ return 'x: '+d.key[0]+', y: '+d.key[1]+', val: '+d.value; })
+        //*  title does not work, it is broken
     .colorAccessor(function(d){ return d.value; })
     .colors(d3.scale.category20b())
     .x(d3.scale.linear().domain([0,600]))
@@ -105,8 +109,6 @@ var scatter = dc.scatterPlot("#chart")
 
 dc.renderAll();
 
-  // console.log(data);
-  //  console.log(dateDimension.top(1)[0].date);
   print_filter('scatterGroup');
 
   </script>
